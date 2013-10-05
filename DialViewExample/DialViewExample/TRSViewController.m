@@ -13,6 +13,7 @@
 @interface TRSViewController ()  <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet TRSDialScrollView *dialView;
+@property (weak, nonatomic) IBOutlet UILabel *currentValue;
 
 @end
 
@@ -64,6 +65,12 @@
 }
 
 #pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"scrollViewDidScroll:");
+    if (scrollView.dragging)
+        self.currentValue.text = [NSString stringWithFormat:@"currentValue %d",self.dialView.currentValue];
+}
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {    

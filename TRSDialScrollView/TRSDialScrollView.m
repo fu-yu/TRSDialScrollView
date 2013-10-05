@@ -137,6 +137,12 @@
     return [super forwardingTargetForSelector:aSelector];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if ([self.delegate respondsToSelector:@selector(scrollViewDidScroll:)])
+        
+        [self.delegate scrollViewDidScroll:scrollView];
+}
+
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
                      withVelocity:(CGPoint)velocity
               targetContentOffset:(inout CGPoint *)targetContentOffset {
